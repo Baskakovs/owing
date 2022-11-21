@@ -2,7 +2,7 @@ import '../App.css'
 function PaymentCell(){
     return(
         <>
-        <div className='justify-content-evenly'>
+        <div className='justify-content-evenly flex'>
             <p>Name</p>
             <p>Description</p>
             <p>Amount</p>

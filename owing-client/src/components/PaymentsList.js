@@ -3,15 +3,17 @@ import { Container } from 'semantic-ui-react'
 import '../App.css'
 
 import PaymentCell from './PaymentCell'
+import PaymentCard from './PaymentCard'
 function PaymentsList(){
     return(
         <>
-        <div className='justify-content-evenly'>
-            <p>Paid by:</p>
-            <p>Description</p>
-            <p>Amount</p>
+        <div className='grid-container'>
+            <span>Paid by</span>
+            <span>Description</span>
+            <span>Amount</span>
+            <span>Category</span>
         </div>
-        <PaymentCell/>
+        <PaymentCard/>
         </>
     )
 }

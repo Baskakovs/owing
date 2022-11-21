@@ -1,6 +1,3 @@
-import { Dropdown, Grid, Input, Label} from 'semantic-ui-react'
-import '../App.css'
-
 function UserSelect(){
     const friendOptions = [
         {
@@ -119,9 +116,24 @@ function UserSelect(){
                     <span>Eat-out</span>
                 </Grid.Column>
             </Grid.Row>
+            <Grid.Row>
+                <Grid.Column>
+                    <span>Taxi</span>
+                </Grid.Column>
+                <Grid.Column>
+                    <span>Flights</span>
+                </Grid.Column>
+                <Grid.Column>
+                    <span>Entertainment</span>
+                </Grid.Column>
+            </Grid.Row>
         </Grid>
-
-
+        <Form>
+            <TextArea placeholder='Description' />
+        </Form>
+        <NavLink to="/">
+            <Button fluid>Add</Button>
+        </NavLink>
         </>
     )
 }

@@ -4,11 +4,8 @@ class CreatePaymentsTable < ActiveRecord::Migration[6.1]
       t.float :amount
       t.string :description
       t.integer :category
-      t.integer :paid_by
-      t.integer :paid_for
-      t.integer :paid_for_2
-      t.timestamp :created_at
-      t.timestamp :updated_at
+      t.integer :credit_id
+      t.integer :debit_id
     end
   end
 end
