@@ -5,10 +5,11 @@ import '../App.css'
 
 import PaymentCard from './PaymentCard'
 function PaymentsList(){
+    const [paymentsList, setPaymentsList] = useState()
     useEffect(()=>{
         fetch('http://localhost:9291/payments')
         .then((res)=>res.json())
-        .then((obj)=>console.log(obj))
+        .then((obj)=>setPaymentsList(obj))
     },[])
     return(
         <>
@@ -18,7 +19,11 @@ function PaymentsList(){
             <span>Amount</span>
             <span>Category</span>
         </div>
-        <PaymentCard/>
+        {Array.isArray(paymentsList) ? 
+        paymentsList.map((payment)=>{
+            return <PaymentCard payment={payment}/>
+        })
+        : null}
         </>
     )
 }
