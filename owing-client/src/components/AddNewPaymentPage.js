@@ -30,7 +30,7 @@ function AddNewPaymentPage(){
 
     function handleSubmit(e){
         e.preventDefault()
-        fetch(`http://localhost:9291/new_payment`,{
+        fetch(`http://localhost:9291/payments`,{
             method: "POST",
             headers: {"Content-Type":"application/json"},
             body: JSON.stringify(data)
