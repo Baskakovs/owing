@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 function UserDropdown({users, onChange}){
 
     function handleChange(e){
@@ -7,7 +8,7 @@ function UserDropdown({users, onChange}){
         <>
         <select name='user_id' onChange={handleChange}>
             {Array.isArray(users) ? users.map((user)=>{
-                return (<option value={user.id}>{`${user.first_name} .${user.last_name[0]}`}</option>)
+                return (<option key={uuidv4()} value={user.id}>{`${user.first_name} .${user.last_name[0]}`}</option>)
             })
             :null}
         </select>

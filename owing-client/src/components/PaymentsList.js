@@ -2,7 +2,6 @@ import 'semantic-ui-css/semantic.min.css'
 import { Container } from 'semantic-ui-react'
 import '../App.css'
 
-import PaymentCell from './PaymentCell'
 import PaymentCard from './PaymentCard'
 function PaymentsList(){
     return(

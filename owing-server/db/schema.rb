@@ -26,8 +26,7 @@ ActiveRecord::Schema.define(version: 2022_11_21_170318) do
     t.float "amount"
     t.string "description"
     t.integer "category"
-    t.integer "credit_id"
-    t.integer "debit_id"
+    t.integer "paid_by"
   end
 
   create_table "users", force: :cascade do |t|

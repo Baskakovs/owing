@@ -10,9 +10,9 @@ function PaymentCard(){
           <span>$120</span>
           <span>🏠</span>
             <NavLink to={"/new_payment"}>
-          <span class="edit"><a href="#">✏️</a></span>
+          <span className="edit"><a href="#">✏️</a></span>
             </NavLink>
-          <span class="delete"><a href="#">🗑️</a></span>
+          <span className="delete"><a href="#">🗑️</a></span>
         </div>
         </>
     )

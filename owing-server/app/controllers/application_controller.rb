@@ -7,4 +7,14 @@ class ApplicationController < Sinatra::Base
     users = User.all
     users.to_json
   end
+
+  post '/new_payment' do
+    new_payment = Payment.create(
+      amount: params[:amount].to_f,
+      description: params[:description],
+      category: params[:description],
+      paid_by: params[:user_id]
+    )
+    new_payment.to_json
+  end
 end
