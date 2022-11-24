@@ -43,7 +43,7 @@ function AddNewPaymentPage(){
         <Form onSubmit={handleSubmit}>
             <Grid columns={2}>
                 <Grid.Row>
-                <UserDropdown users={users} onChange={onChange}/>
+                <UserDropdown defaultValue={"jell"} users={users} onChange={onChange}/>
                 </Grid.Row>
                 <Grid.Row>
                     <Grid.Column>

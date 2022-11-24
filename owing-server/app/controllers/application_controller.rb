@@ -12,6 +12,13 @@ class ApplicationController < Sinatra::Base
     payments.to_json(include: :user)
   end
 
+  get '/payments/:id' do
+    api = []
+    api << payment = Payment.find(params[:id])
+    api << users = User.all
+    api.to_json
+  end
+
   post '/payments' do
     new_payment = Payment.create(
       amount: params[:amount].to_f,
@@ -20,6 +27,18 @@ class ApplicationController < Sinatra::Base
       user_id: params[:user_id]
     )
     new_payment.to_json
+  end
+
+  patch '/payments/:id' do
+    payment = Payment.find(params[:id])
+    payment.update(
+      id: params[:id],
+      amount: params[:amount],
+      description: params[:description],
+      category: params[:category],
+      user_id: params[:user_id]
+    )
+    payment.to_json
   end
 
   delete '/payments/:id' do
