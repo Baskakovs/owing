@@ -3,14 +3,14 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
   # Add your routes here
-  get '/users' do
-    users = User.all
-    users.to_json
-  end
+  # get '/users' do
+  #   users = User.all
+  #   users.to_json
+  # end
 
   get '/payments' do
     payments = Payment.all
-    payments.to_json
+    payments.to_json(include: :user)
   end
 
   post '/payments' do

@@ -4,7 +4,7 @@ class CreatePaymentsTable < ActiveRecord::Migration[6.1]
       t.float :amount
       t.string :description
       t.integer :category
-      t.integer :paid_by
+      t.integer :user_id
     end
   end
 end

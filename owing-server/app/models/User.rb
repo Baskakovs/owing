@@ -1,4 +1,6 @@
+require 'pry'
 class User < ActiveRecord::Base
-    belongs_to :debt
-    belongs_to :payment
+    has_many :payments
+
+
 end
