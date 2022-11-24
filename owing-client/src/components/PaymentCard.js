@@ -15,7 +15,7 @@ function PaymentCard({payment, handleDelete}){
           <span>{description}</span>
           <span>${amount}</span>
           <span>{category}</span>
-            <NavLink to={"/new_payment"}>
+            <NavLink to={`/new_payment/${id}`}>
           <span className="edit"><a href="#">✏️</a></span>
             </NavLink>
           <span className="delete" onClick={handleDelete}><a href="#" id={id}>🗑️</a></span>

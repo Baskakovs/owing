@@ -18,6 +18,9 @@ function App() {
     <Route exact path="/new_payment">
       <AddNewPaymentPage/>
     </Route>
+    <Route path="/new_payment/:id">
+      <AddNewPaymentPage/>
+    </Route>
    </Switch>
    </> 
   );
