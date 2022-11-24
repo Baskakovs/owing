@@ -5,6 +5,7 @@ import PaymentsList from './PaymentsList';
 import AddNewButton from './AddNewButton';
 
 function TabPage() {
+
   return (
    <>
     <Header/>

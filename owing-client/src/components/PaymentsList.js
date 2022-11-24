@@ -11,6 +11,14 @@ function PaymentsList(){
         .then((res)=>res.json())
         .then((obj)=>setPaymentsList(obj))
     },[])
+
+    function handleDelete(e){
+        let id = e.target.id
+        fetch(`http://localhost:9291/payments/${id}`,{
+            method: "DELETE",
+        })
+    }
+    
     return(
         <>
         <div className='grid-container'>
@@ -21,7 +29,7 @@ function PaymentsList(){
         </div>
         {Array.isArray(paymentsList) ? 
         paymentsList.map((payment)=>{
-            return <PaymentCard payment={payment}/>
+            return <PaymentCard payment={payment} handleDelete={handleDelete}/>
         })
         : null}
         </>
