@@ -1,7 +1,7 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import {Grid, Input, TextArea, Form, Button} from 'semantic-ui-react'
-import { NavLink, useParams } from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import '../App.css'
 import {useEffect, useState} from 'react'
 

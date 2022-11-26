@@ -1,10 +1,9 @@
 import React from 'react';
-import { Dropdown, Grid, Input, TextArea, Form, Button} from 'semantic-ui-react'
-import { NavLink } from 'react-router-dom'
+import { Grid, Input, TextArea, Form, Button} from 'semantic-ui-react'
+import { v4 as uuidv4 } from 'uuid';
 import '../App.css'
 import {useEffect, useState} from 'react'
 
-import UserDropdown from './UserDropdown'
 
 function AddNewPaymentPage(){
 
@@ -43,7 +42,20 @@ function AddNewPaymentPage(){
         <Form onSubmit={handleSubmit}>
             <Grid columns={2}>
                 <Grid.Row>
-                <UserDropdown defaultValue={"jell"} users={users} onChange={onChange}/>
+                <select name='user_id' value=
+                {data.user_id} onChange=
+                {onChange}>
+                    {Array.isArray(users) ? 
+                    users.map((user)=>{
+                        return (
+                            <option key=
+                            {uuidv4()} value=
+                            {user.id}>
+{`${user.first_name} .${user.last_name[0]}`}
+                            </option>)
+                        })
+                    :null}
+                </select>
                 </Grid.Row>
                 <Grid.Row>
                     <Grid.Column>

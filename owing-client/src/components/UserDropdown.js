@@ -6,10 +6,14 @@ function UserDropdown({users, onChange}){
     }
     return(
         <>
-        <select name='user_id' onChange={handleChange}>
+        <select name='user_id'  onChange={handleChange}>
             {Array.isArray(users) ? users.map((user)=>{
-                return (<option key={uuidv4()} value={user.id}>{`${user.first_name} .${user.last_name[0]}`}</option>)
-            })
+                {}
+                return (
+                    <option key={uuidv4()} value={user.id}>
+                        {`${user.first_name} .${user.last_name[0]}`}
+                    </option>)
+                })
             :null}
         </select>
         </>
