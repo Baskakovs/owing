@@ -17,6 +17,14 @@ function PaymentsList(){
         fetch(`http://localhost:9291/payments/${id}`,{
             method: "DELETE",
         })
+        .then(()=>{
+            let newList = paymentsList.filter((item)=>{
+                if(item.id != id){
+                    return item
+                }
+            })
+            setPaymentsList(newList)
+        })
     }
     
     return(
