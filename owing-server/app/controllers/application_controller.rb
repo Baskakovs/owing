@@ -27,11 +27,10 @@ class ApplicationController < Sinatra::Base
       category: params[:description],
       user_id: params[:user_id]
     )
-    binding.pry
     id = params[:user_id]
     amount = params[:amount]
     Balance.update_user_paid(id: id, amount: amount)
-    # new_payment.to_json
+    new_payment.to_json
   end
 
   patch '/payments/:id' do
