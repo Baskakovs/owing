@@ -1,4 +1,5 @@
 require 'pry'
+
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
 
@@ -26,7 +27,11 @@ class ApplicationController < Sinatra::Base
       category: params[:description],
       user_id: params[:user_id]
     )
-    new_payment.to_json
+    binding.pry
+    id = params[:user_id]
+    amount = params[:amount]
+    Balance.update_user_paid(id: id, amount: amount)
+    # new_payment.to_json
   end
 
   patch '/payments/:id' do

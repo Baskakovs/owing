@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_21_170318) do
+ActiveRecord::Schema.define(version: 2022_11_27_214945) do
+
+  create_table "balances", force: :cascade do |t|
+    t.integer "user_id"
+    t.float "credit"
+    t.float "debit"
+  end
 
   create_table "credits", force: :cascade do |t|
     t.integer "user_id"

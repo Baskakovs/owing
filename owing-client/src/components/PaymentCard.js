@@ -2,6 +2,7 @@ import {Card} from 'semantic-ui-react'
 
 import {NavLink} from 'react-router-dom'
 function PaymentCard({payment, handleDelete}){
+  console.log( payment)
 
   const {id, description, amount, category, user} = payment
   const {first_name, last_name} = user
