@@ -24,11 +24,22 @@ function TabPage() {
         method: "DELETE",
     })
     .then(()=>{
+        let deleted_info = []
         let newList = paymentsList.filter((item)=>{
             if(item.id != id){
                 return item
+            }else{
+              deleted_info = [item['amount'], item['user_id']]
             }
         })
+        let newBalance
+        if(deleted_info[1] == 1){
+          newBalance = balance - deleted_info[0]/3
+          setBalance(newBalance)
+        }else{
+          newBalance = balance + deleted_info[0]/3
+          setBalance(newBalance)
+        }
         setPaymentsList(newList)
     })
   }

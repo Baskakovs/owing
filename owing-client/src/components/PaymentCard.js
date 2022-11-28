@@ -7,7 +7,6 @@ function PaymentCard({payment, handleDelete}){
   const categoryEmojies = {0: '🍕', 1: '⚡', 2: '🚀', 3: '💃'}
   let emoji = categoryEmojies[category]
   return(
-
         <div className='my-5'>
           <div key={id} className='grid-container border-top border-bottom p-5 
           my-5 payment-card'>
@@ -18,7 +17,8 @@ function PaymentCard({payment, handleDelete}){
               <NavLink to={`/new_payment/${id}`}>
             <span className="edit"><a href="#">✏️</a></span>
               </NavLink>
-            <span className="delete" onClick={handleDelete}><a href="#" id={id}>
+            <span className="delete" onClick={handleDelete}><a href="#" id={id} 
+            value={"amount"}>
               🗑️</a></span>
           </div>
         </div>
