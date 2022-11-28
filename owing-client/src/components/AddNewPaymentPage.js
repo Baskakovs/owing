@@ -77,7 +77,8 @@ function AddNewPaymentPage(){
             </div>
             <div columns={1} className={'my-5'} >
                 <div className='w-100'>
-                    <select name='category' value={data.category} onChange={onChange}>
+                    <select name='category' value={data.category} onChange=
+                    {onChange}>
                         <option key={uuidv4()} value={0}>Food</option>
                         <option key={uuidv4()} value={1}>Energy</option>
                         <option key={uuidv4()}  value={2}>Travel</option>
@@ -85,7 +86,8 @@ function AddNewPaymentPage(){
                     </select>
                 </div>
             </div>
-            <textarea className={'my-5'} placeholder='Description' name='description' onChange=
+            <textarea className={'my-5'} placeholder='Description' 
+            name='description' onChange=
             {onChange}/>
             <Button value='submit' fluid>Add</Button>
         </Form>

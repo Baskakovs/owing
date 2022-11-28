@@ -1,17 +1,15 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import {Grid, Input, TextArea, Form, Button} from 'semantic-ui-react'
-import {NavLink, useParams, useHistory} from 'react-router-dom'
+import {Input, Form, Button} from 'semantic-ui-react'
+import {useParams, useHistory} from 'react-router-dom'
 import '../App.css'
 import {useEffect, useState} from 'react'
 
-import UserDropdown from './UserDropdown'
 
 function EditPaymentPage(){
 
     const [users, setUsers] = useState()
     const [data, setData] = useState([])
-    const [payment, setPayment] = useState({})
     const params = useParams()
     const history = useHistory()
     useEffect(()=>{
@@ -23,8 +21,10 @@ function EditPaymentPage(){
         })
       },[])
 
-    const {id, amount, description, category, user_id, user} = data
+    const {amount, description, category} = data
+    console.log(category)
 
+    console.log(category)
     function onChange(e){
         const name = e.target.name
         const value = e.target.value
@@ -51,9 +51,10 @@ function EditPaymentPage(){
     return(
         <>
         <Form onSubmit={handleUpdate}>
-            <Grid columns={2}>
-                <Grid.Row>
-                <select name='user_id' value={data.user_id} onChange={onChange}>
+            <div>
+                <div className='w-100 my-5'>
+                    <select name='user_id' value={data.user_id} onChange=
+                    {onChange}>
                     {Array.isArray(users) ? users.map((user)=>{
                         return (
                             <option key={uuidv4()} value={user.id}>
@@ -62,38 +63,35 @@ function EditPaymentPage(){
                         })
                     :null}
                 </select>
-                </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column>
+                </div>
+                <div>
+                    <div>
                         <Input
                             defaultValue={amount}
                             name='amount'
                             onChange={onChange}
+                            className={'w-30'}
+                            label='EUR'
                         />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <span>EUR</span>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
-            <Grid columns={1}>
-                <Grid.Row>
-                    <select name='category' onChange={onChange}>
-                        {categories.map((c)=>{
-                            return(
-                                category === c ? <option value={c} key={c}  
-                                selected>{c}</option>:<option value={c} key={c}>
-                                {c}</option>
-                            )
-                        })}
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div className={'my-5'}>
+                    <select name='category' value={category} onChange=
+                    {onChange}>
+                        <option key={uuidv4()} value={0}>Food</option>
+                        <option key={uuidv4()} value={1}>Energy</option>
+                        <option key={uuidv4()}  value={2}>Travel</option>
+                        <option key={uuidv4()}  value={3}>Entertainment</option>
                     </select>
-                </Grid.Row>
+                </div>
 
-            </Grid>
+            </div>
 
 
-            <textarea placeholder="Description" value={description} name="description" rows="3" 
-            onChange={onChange}>
+            <textarea placeholder="Description" value={description} 
+            name="description" rows="3" onChange={onChange} className={'my-5'}>
             </textarea>
             <Button value='submit' fluid>Change</Button>
         </Form>
