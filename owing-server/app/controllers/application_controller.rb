@@ -9,8 +9,10 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/payments' do
-    payments = Payment.all
-    payments.to_json(include: :user)
+    api = []
+    api << payments = Payment.all
+    api << balance = Balance.first
+    api.to_json(include: :user)
   end
 
   get '/payments/:id' do
@@ -29,7 +31,6 @@ class ApplicationController < Sinatra::Base
       category: params[:description],
       user_id: params[:user_id]
     )
-    Balance.find(19).balance
     Balance.update_balance(id: id, amount: amount)
     new_payment.to_json
   end

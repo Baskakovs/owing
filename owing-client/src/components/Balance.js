@@ -1,8 +1,8 @@
 import '../App.css'
-function Balance(){
+function Balance({balance}){
     return(
         <>
-        <h1 className='justify-content-center flex'>$100</h1>
+        <h1 className='justify-content-center flex'>${balance}</h1>
         </>
     )
 }

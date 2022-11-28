@@ -4,13 +4,7 @@ import { useEffect, useState } from 'react'
 import '../App.css'
 
 import PaymentCard from './PaymentCard'
-function PaymentsList(){
-    const [paymentsList, setPaymentsList] = useState()
-    useEffect(()=>{
-        fetch('http://localhost:9291/payments')
-        .then((res)=>res.json())
-        .then((obj)=>setPaymentsList(obj))
-    },[])
+function PaymentsList({paymentsList, handleDelete}){
 
     function handleDelete(e){
         let id = e.target.id
@@ -23,7 +17,6 @@ function PaymentsList(){
                     return item
                 }
             })
-            setPaymentsList(newList)
         })
     }
     

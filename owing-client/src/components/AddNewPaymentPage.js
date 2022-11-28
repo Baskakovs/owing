@@ -25,7 +25,6 @@ function AddNewPaymentPage(){
             [name]: value
         })
     }
-    console.log(data)
 
     function handleSubmit(e){
         e.preventDefault()
