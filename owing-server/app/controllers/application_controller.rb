@@ -29,7 +29,9 @@ class ApplicationController < Sinatra::Base
     )
     id = params[:user_id]
     amount = params[:amount]
-    Balance.update_user_paid(id: id, amount: amount)
+    # Balance.update_user_paid(id: id, amount: amount)
+    # Balance.update_user_not_paid(id: id, amount: amount)
+    Balance.update_balance(id: id, amount: amount)
     new_payment.to_json
   end
 
