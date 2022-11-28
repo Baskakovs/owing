@@ -1,7 +1,7 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import {Grid, Input, TextArea, Form, Button} from 'semantic-ui-react'
-import {useParams} from 'react-router-dom'
+import {NavLink, useParams, useHistory} from 'react-router-dom'
 import '../App.css'
 import {useEffect, useState} from 'react'
 
@@ -13,6 +13,7 @@ function EditPaymentPage(){
     const [data, setData] = useState([])
     const [payment, setPayment] = useState({})
     const params = useParams()
+    const history = useHistory()
     useEffect(()=>{
         fetch(`http://localhost:9291/payments/${params.id}`)
         .then((res)=>res.json())
@@ -41,6 +42,7 @@ function EditPaymentPage(){
             body: JSON.stringify(data)
             }
         )
+        .then(()=>history.push('/'))
     }
 
     const categories = ['Food', 'Energies', 'Travel', 'Entertainment']
@@ -93,7 +95,7 @@ function EditPaymentPage(){
             <textarea placeholder="Description" value={description} name="description" rows="3" 
             onChange={onChange}>
             </textarea>
-            <Button value='submit' fluid>Add</Button>
+            <Button value='submit' fluid>Change</Button>
         </Form>
             
         </>

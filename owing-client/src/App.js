@@ -10,8 +10,7 @@ function App() {
   const [payments, setPayments] = useState()
 
   return (
-   <>
-   <></>
+   <div className='p-5'>
    <Switch>
     <Route exact path="/">
       <TabPage/>
@@ -23,7 +22,7 @@ function App() {
       <EditPaymentPage/>
     </Route>
    </Switch>
-   </> 
+   </div> 
   );
 }
 

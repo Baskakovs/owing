@@ -1,6 +1,4 @@
 import 'semantic-ui-css/semantic.min.css'
-import { Container } from 'semantic-ui-react'
-import { useEffect, useState } from 'react'
 import '../App.css'
 
 import PaymentCard from './PaymentCard'
@@ -22,12 +20,6 @@ function PaymentsList({paymentsList, handleDelete}){
     
     return(
         <>
-        <div className='grid-container'>
-            <span>Paid by</span>
-            <span>Description</span>
-            <span>Amount</span>
-            <span>Category</span>
-        </div>
         {Array.isArray(paymentsList) ? 
         paymentsList.map((payment)=>{
             return <PaymentCard payment={payment} handleDelete={handleDelete}/>

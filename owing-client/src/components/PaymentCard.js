@@ -6,15 +6,17 @@ function PaymentCard({payment, handleDelete}){
   const {id, description, amount, category, user} = payment
   const {first_name, last_name} = user
 
-  
-    return(
+  const categoryEmojies = {0: '🍕', 1: '⚡', 2: '🚀', 3: '💃'}
+  let emoji = categoryEmojies[category]
+  return(
 
         <>
-        <div key={id} className='grid-container border-top border-bottom p-5 mx-5 payment-card'>
+        <div key={id} className='grid-container border-top border-bottom p-5 my-
+        5 payment-card'>
           <span>{first_name} {last_name[0]}</span>
           <span>{description}</span>
           <span>${amount}</span>
-          <span>{category}</span>
+          <span>{emoji}</span>
             <NavLink to={`/new_payment/${id}`}>
           <span className="edit"><a href="#">✏️</a></span>
             </NavLink>

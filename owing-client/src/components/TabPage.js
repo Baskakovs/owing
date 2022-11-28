@@ -35,7 +35,6 @@ function TabPage() {
 
   return (
    <>
-    <Header/>
     <Balance balance={balance}/>
     <PaymentsList paymentsList={paymentsList} handleDelete={handleDelete}/>
     <AddNewButton/>
