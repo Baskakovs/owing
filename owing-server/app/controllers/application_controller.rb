@@ -21,16 +21,15 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/payments' do
+    id = params[:user_id] 
+    amount = params[:amount]
     new_payment = Payment.create(
       amount: params[:amount].to_f,
       description: params[:description],
       category: params[:description],
       user_id: params[:user_id]
     )
-    id = params[:user_id]
-    amount = params[:amount]
-    # Balance.update_user_paid(id: id, amount: amount)
-    # Balance.update_user_not_paid(id: id, amount: amount)
+    Balance.find(19).balance
     Balance.update_balance(id: id, amount: amount)
     new_payment.to_json
   end
