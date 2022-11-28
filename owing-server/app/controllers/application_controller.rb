@@ -47,6 +47,8 @@ class ApplicationController < Sinatra::Base
   end
 
   delete '/payments/:id' do
-    payment = Payment.find(params[:id]).destroy.to_json
+    payment = Payment.find(params[:id])
+    Balance.edit(payment: payment, new_amount: 0, user_id: payment[:user_id])
+    payment.destroy.to_json
   end
 end
