@@ -23,3 +23,10 @@ task :console do
   Pry.start
 
 end
+
+desc "delete all records"
+task :delete do
+  Balance.delete_all
+  Payment.delete_all
+  User.delete_all
+end

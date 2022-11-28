@@ -37,6 +37,11 @@ class ApplicationController < Sinatra::Base
 
   patch '/payments/:id' do
     payment = Payment.find(params[:id])
+    payment_id = params[:id]
+    new_amount = params[:amount].to_f.round(2)
+    user_id = params[:user_id]
+    Balance.edit_balance_paid(payment: payment, new_amount: new_amount, user_id: user_id)
+    Balance.edit_balance_not_paid(payment: payment, new_amount: new_amount, user_id: user_id)
     payment.update(
       id: params[:id],
       amount: params[:amount],
@@ -44,6 +49,7 @@ class ApplicationController < Sinatra::Base
       category: params[:category],
       user_id: params[:user_id]
     )
+
     payment.to_json
   end
 

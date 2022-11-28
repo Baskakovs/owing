@@ -13,6 +13,43 @@ class Balance < ActiveRecord::Base
         self.update_user_not_paid(id: id, amount: amount_divided)
     end
 
+    # def self.edit_balance(id:, amount:)
+    #     self.edit_balance_paid()
+    #     self.edit_balance_not_paid()
+    # end
+
+    def self.edit_balance_paid(payment:, new_amount:, user_id:)
+        balance = Balance.find_by(user_id: user_id)
+        if payment[:amount].to_f < new_amount.to_f
+            new_debit = balance[:debit] + (new_amount.to_f.round(2)/@@count - 
+            balance[:debit])
+            balance.update(debit: new_debit)
+        elsif payment[:amount].to_f > new_amount.to_f
+            new_debit = balance[:debit] - (balance[:debit] -            
+            new_amount.to_f.round(2)/@@count)
+            balance.update(debit: new_debit)
+       end
+    end
+
+
+
+    def self.edit_balance_not_paid(payment:, new_amount:, user_id:)
+        balance = Balance.where.not(user_id: user_id)
+        if payment[:amount].to_f < new_amount.to_f
+            balance.map do |t|
+                new_credit = t[:credit] + (new_amount.to_f.round(2)/@@count -
+                t[:credit])
+                t.update(credit: new_credit)
+            end
+        elsif payment[:amount].to_f > new_amount.to_f
+            balance.map do |t|
+                new_balance = t[:credit] - (t[:credit] -
+                new_amount.to_f.round(2)/@@count)
+                t.update(credit: new_balance)
+            end
+        end
+    end
+
     private
 
     def self.update_user_paid(id:, amount:)
