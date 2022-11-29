@@ -20,6 +20,7 @@ In the terminal navigate to the *owing-server* repository, and:
 1. bundle install
 2. bundle exec rake db:migrate
 3. bundle exec db:seed
+
 The launch the React app by navigating to the *owing-client* repository, and:
 1. npm install
 2. npm start
