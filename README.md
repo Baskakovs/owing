@@ -1,7 +1,7 @@
 README - Owing
 ==============
 
-[alt text](./GIF.gif)
+[Link](https://github.com/Baskakovs/owing/blob/main/GIF.gif)
 
 Description
 -----------
