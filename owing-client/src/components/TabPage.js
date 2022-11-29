@@ -1,6 +1,5 @@
 
 import { useEffect, useState } from 'react';
-import Header from './Header';
 import Balance from './Balance'
 import PaymentsList from './PaymentsList';
 import AddNewButton from './AddNewButton';
