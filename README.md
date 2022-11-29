@@ -1,7 +1,7 @@
 README - Owing
 ==============
 
-[Image](./GIF.gif)
+[alt text](./GIF.gif)
 
 Description
 -----------
