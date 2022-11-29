@@ -1,7 +1,7 @@
 README - Owing
 ==============
 
-[Link](./GIF.gif)
+[Image](./GIF.gif)
 
 Description
 -----------
