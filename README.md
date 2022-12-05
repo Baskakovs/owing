@@ -1,7 +1,7 @@
 README - Owing
 ==============
 
-[Link](./GIF.gif)
+![Image](./GIF.gif)
 
 Description
 -----------
@@ -16,11 +16,12 @@ The front end of the application is built using React.js. React makes CRUD actio
 Setting-up
 ----------
 
-In the terminal navigate to the *owing-server* repository, and:
+In the terminal, navigate to the *owing-server* repository, and:
 1. bundle install
 2. bundle exec rake db:migrate
 3. bundle exec db:seed
-The launch the React app by navigating to the *owing-client* repository, and:
+
+Then launch the React app by navigating to the *owing-client* repository, and:
 1. npm install
 2. npm start
 
