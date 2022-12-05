@@ -1,7 +1,7 @@
 import {Form, Input, Button} from 'semantic-ui-react'
 import {useHistory} from 'react-router-dom'
 import {useState} from 'react'
-function AddNewUserPage(){
+function AddNewUserPage({amendUserList}){
     const [names, setNames] = useState([])
     function handleChange(e){
         let key = e.target.name
@@ -21,8 +21,8 @@ function AddNewUserPage(){
             }
         )
         .then(()=> history.push('/'))
+        .then(()=>{amendUserList(names)})
     }
-    console.log(names)
     return(
         <>
         <Form onSubmit={handleSubmit}>

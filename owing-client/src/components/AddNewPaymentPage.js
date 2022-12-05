@@ -6,17 +6,10 @@ import {useEffect, useState} from 'react'
 import {useHistory} from 'react-router-dom'
 
 
-function AddNewPaymentPage(){
+function AddNewPaymentPage({users}){
 
     const history = useHistory()
-    const [users, setUsers] = useState()
-    useEffect(()=>{
-        fetch('http://localhost:9291/users')
-        .then((res)=>res.json())
-        .then((obj)=>setUsers(obj))
-      },[])
 
-      
     const [data, setData] = useState({
         user_id: '1',
         category: '0'

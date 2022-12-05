@@ -1,8 +1,13 @@
 import {NavLink} from 'react-router-dom'
-function PaymentCard({payment, handleDelete}){
+function PaymentCard({payment, handleDelete,users}){
 
-  const {id, description, amount, category, user} = payment
-  const {first_name, last_name} = user
+  let theUser = users.filter((user)=>{
+    if(user.id == payment.user_id) return user
+  })
+  
+  const {id, description, amount, category} = payment
+  const {first_name, last_name} = theUser[0]
+  const hi = "hello"
 
   const categoryEmojies = {0: '🍕', 1: '⚡', 2: '🚀', 3: '💃'}
   let emoji = categoryEmojies[category]
@@ -14,7 +19,7 @@ function PaymentCard({payment, handleDelete}){
             <span>{description}</span>
             <span>${amount}</span>
             <span>{emoji}</span>
-              <NavLink to={`/new_payment/${id}`}>
+              <NavLink to={`/new_payment/${id}`} hell>
             <span className="edit"><a href="#">✏️</a></span>
               </NavLink>
             <span className="delete" onClick={handleDelete}><a href="#" id={id} 
