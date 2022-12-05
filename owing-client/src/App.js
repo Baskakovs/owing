@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import TabPage from './components/TabPage';
 import AddNewPaymentPage from './components/AddNewPaymentPage';
 import EditPaymentPage from './components/EditPaymentPage';
+import AddNewUserPage from './components/AddNewUserPage';
 
 function App() {
   const [payments, setPayments] = useState()
@@ -18,7 +19,10 @@ function App() {
     <Route exact path="/new_payment">
       <AddNewPaymentPage/>
     </Route>
-    <Route path="/new_payment/:id">
+    <Route exact path="/new_user">
+      <AddNewUserPage/>
+    </Route>
+    <Route exact path="/new_payment/:id">
       <EditPaymentPage/>
     </Route>
    </Switch>

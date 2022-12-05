@@ -1,8 +1,10 @@
 
 import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import Balance from './Balance'
 import PaymentsList from './PaymentsList';
 import AddNewButton from './AddNewButton';
+import AddUserButton from './AddUserButton';
 
 function TabPage() {
   const [paymentsList, setPaymentsList] = useState([])
@@ -48,6 +50,7 @@ function TabPage() {
     <Balance balance={balance}/>
     <PaymentsList paymentsList={paymentsList} handleDelete={handleDelete}/>
     <AddNewButton/>
+    <AddUserButton/>
    </> 
   );
 }
