@@ -16,7 +16,8 @@ function App() {
     .then((obj)=>{
       console.log(obj)
       setPaymentsList(obj[2])
-      let balance = obj[1]['debit']-obj[1]['credit']
+      let numUsers = obj[3].length
+      let balance = (obj[1]['debit']-obj[1]['credit'])/numUsers
       setBalance(balance)
       setUsers(obj[3])
     })
@@ -70,6 +71,13 @@ function App() {
   function onAddNewPayment(data){
     let newPaymentList = [...paymentsList, data]
     setPaymentsList(newPaymentList)
+    if(data.user_id != 1){
+      let newBalance = balance - data.amount/users.length
+      setBalance(newBalance)  
+    }else{
+      let newBalance = balance + data.amount/users.length
+      setBalance(newBalance) 
+    }
   }
 
 
