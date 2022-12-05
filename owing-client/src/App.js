@@ -23,34 +23,32 @@ function App() {
     })
   },[])
 
-  function handleDelete(e){
-    let id = e.target.id
+  function handleDelete(id, amount, user_id){
+    console.log("hello",amount, user_id)
     fetch(`http://localhost:9291/payments/${id}`,{
         method: "DELETE",
     })
     .then(()=>{
-        let deleted_info = []
-        let newList = paymentsList.filter((item)=>{
-            if(item.id != id){
-                return item
-            }else{
-              deleted_info = [item['amount'], item['user_id']]
-            }
-        })
-        let newBalance
-        if(deleted_info[1] == 1){
-          newBalance = balance - deleted_info[0]
-          setBalance(newBalance)
+      let newPaymentList = paymentsList.filter((payment)=>{
+        if(payment.id != id){
+          return payment
         }else{
-          newBalance = balance + deleted_info[0]
-          setBalance(newBalance)
+          return null
         }
-        setPaymentsList(newList)
+      })
+      setPaymentsList(newPaymentList)
+      let newBalance
+      if(user_id == 1){
+        newBalance = balance - amount/users.length
+        setBalance(newBalance)
+      }else{
+        newBalance = balance + amount/users.length
+        setBalance(newBalance)
+      }
     })
   }
 
   function onUpdate(data){
-    console.log(data)
     let newPaymentList = paymentsList.map((payment)=>{
       if(payment.id == data.id){
         return payment = data
@@ -59,7 +57,25 @@ function App() {
       }
     })
     setPaymentsList(newPaymentList)
-  }
+    let newBalance
+    if(data.user_id != 1){
+      if(balance > data.amount){
+        newBalance = balance + (balance-data.amount)/users.length
+        setBalance(newBalance)
+      }else if(balance < data.amount){
+        newBalance = balance - (balance-data.amount)/users.length
+        setBalance(newBalance)
+      }
+    }else if(data.user_id == 1){
+      if(balance > data.amount){
+        newBalance = balance - (balance-data.amount)/users.length
+        setBalance(newBalance)
+      }else if(balance < data.amount){
+        newBalance = balance + (balance-data.amount)/users.length
+        setBalance(newBalance)
+      }
+  }}
+
   
   function amendUserList(names){
     let newUserList = [...users, {id: users.length+1, first_name: 
@@ -74,11 +90,12 @@ function App() {
     if(data.user_id != 1){
       let newBalance = balance - data.amount/users.length
       setBalance(newBalance)  
-    }else{
+    }else if(data.user_id == 1){
       let newBalance = balance + data.amount/users.length
       setBalance(newBalance) 
     }
   }
+
 
 
   return (
