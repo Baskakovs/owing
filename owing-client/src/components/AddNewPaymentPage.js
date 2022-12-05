@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Input, TextArea, Form, Button} from 'semantic-ui-react'
+import {Input, Form, Button} from 'semantic-ui-react'
 import { v4 as uuidv4 } from 'uuid';
 import '../App.css'
 import {useEffect, useState} from 'react'

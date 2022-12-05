@@ -32,6 +32,14 @@ class ApplicationController < Sinatra::Base
     new_payment.to_json
   end
 
+  post '/users' do
+    new_user = User.create(
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+    )
+    new_balance = Balance.create(user_id: new_user.id, credit: 0.0, debit: 0.0)
+  end
+
   patch '/payments/:id' do
     payment = Payment.find(params[:id])
     Balance.edit(payment: payment, new_amount: params[:amount], 
