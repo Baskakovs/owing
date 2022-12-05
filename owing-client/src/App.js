@@ -5,6 +5,7 @@ import TabPage from './components/TabPage';
 import AddNewPaymentPage from './components/AddNewPaymentPage';
 import EditPaymentPage from './components/EditPaymentPage';
 import AddNewUserPage from './components/AddNewUserPage';
+import Test from './components/test';
 
 function App() {
   const [paymentsList, setPaymentsList] = useState([])
@@ -15,11 +16,18 @@ function App() {
     .then((res)=>res.json())
     .then((obj)=>{
       console.log(obj)
-      setPaymentsList(obj[2])
-      let numUsers = obj[3].length
-      let balance = (obj[1]['debit']-obj[1]['credit'])/numUsers
-      setBalance(balance)
-      setUsers(obj[3])
+
+      let newPaymentList = []
+      obj.map((user)=>{
+        user.payments.map((payment)=>{
+          newPaymentList = [...newPaymentList, payment]
+        })
+      })
+      setPaymentsList(newPaymentList)
+      let credit = obj[0].balances[0].credit
+      let debit = obj[0].balances[0].debit
+      setBalance(debit - credit)
+      setUsers(obj)
     })
   },[])
 
@@ -38,11 +46,14 @@ function App() {
       })
       setPaymentsList(newPaymentList)
       let newBalance
+      console.log()
       if(user_id == 1){
-        newBalance = balance - amount/users.length
+        newBalance = Math.floor(parseInt(balance) - 
+        parseInt(amount/users.length))
         setBalance(newBalance)
-      }else{
-        newBalance = balance + amount/users.length
+      }else if (user_id != 1){
+        newBalance = Math.floor
+        (parseInt(balance) + parseInt(amount/users.length))
         setBalance(newBalance)
       }
     })
@@ -58,23 +69,7 @@ function App() {
     })
     setPaymentsList(newPaymentList)
     let newBalance
-    if(data.user_id != 1){
-      if(balance > data.amount){
-        newBalance = balance + (balance-data.amount)/users.length
-        setBalance(newBalance)
-      }else if(balance < data.amount){
-        newBalance = balance - (balance-data.amount)/users.length
-        setBalance(newBalance)
-      }
-    }else if(data.user_id == 1){
-      if(balance > data.amount){
-        newBalance = balance - (balance-data.amount)/users.length
-        setBalance(newBalance)
-      }else if(balance < data.amount){
-        newBalance = balance + (balance-data.amount)/users.length
-        setBalance(newBalance)
-      }
-  }}
+  }
 
   
   function amendUserList(names){

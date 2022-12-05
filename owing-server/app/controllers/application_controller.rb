@@ -3,13 +3,18 @@ require 'pry'
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
 
+  # get '/payments' do
+  #   api = []
+  #   api << {current_user:Balance.first.user_id}
+  #   api << Balance.first
+  #   api << Payment.all
+  #   api << User.all
+  #   api.to_json
+  # end
+
   get '/payments' do
-    api = []
-    api << {current_user:Balance.first.user_id}
-    api << Balance.first
-    api << Payment.all
-    api << User.all
-    api.to_json
+    users = User.all
+    users.to_json(include: [:payments, :balances])
   end
 
   post '/payments' do
