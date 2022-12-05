@@ -6,25 +6,31 @@ import '../App.css'
 import {useEffect, useState} from 'react'
 
 
-function EditPaymentPage(){
+function EditPaymentPage({paymentsList, users, onUpdate}){
 
-    const [users, setUsers] = useState()
     const [data, setData] = useState([])
     const params = useParams()
     const history = useHistory()
+
+    let thePayment = paymentsList.filter((payment)=>{
+        if(payment.id == params.id) return payment
+    })
+
     useEffect(()=>{
-        fetch(`http://localhost:9291/payments/${params.id}`)
-        .then((res)=>res.json())
-        .then((obj)=>{
-            setData(obj[0])
-            setUsers(obj[1])
+        setData({
+            category: thePayment[0]['category'],
+            amount: thePayment[0]['amount'],
+            description: thePayment[0]['description'],
+            user_id: parseInt(thePayment[0]['user_id']),
+            id: thePayment[0].id
         })
-      },[])
+    },[])
 
     const {amount, description, category} = data
-    console.log(category)
+    console.log(data)
 
-    console.log(category)
+    
+
     function onChange(e){
         const name = e.target.name
         const value = e.target.value
@@ -43,10 +49,10 @@ function EditPaymentPage(){
             }
         )
         .then(()=>history.push('/'))
+        .then(()=>onUpdate(data))
     }
 
     const categories = ['Food', 'Energies', 'Travel', 'Entertainment']
-    console.log(data)
 
     return(
         <>

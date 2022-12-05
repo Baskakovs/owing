@@ -12,13 +12,6 @@ class ApplicationController < Sinatra::Base
     api.to_json
   end
 
-  get '/payments/:id' do
-    api = []
-    api << Payment.find(params[:id])
-    api << User.all
-    api.to_json
-  end
-
   post '/payments' do
     new_payment = Payment.create(
       amount: params[:amount].to_f,
@@ -38,6 +31,7 @@ class ApplicationController < Sinatra::Base
     new_balance = Balance.create(user_id: new_user.id, credit: 0.0, debit: 0.0)
   end
 
+  
   patch '/payments/:id' do
     payment = Payment.find(params[:id])
     Balance.edit(payment: payment, new_amount: params[:amount], 

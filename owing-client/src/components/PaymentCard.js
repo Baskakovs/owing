@@ -4,10 +4,9 @@ function PaymentCard({payment, handleDelete,users}){
   let theUser = users.filter((user)=>{
     if(user.id == payment.user_id) return user
   })
-  
+  console.log("hi", payment)
   const {id, description, amount, category} = payment
   const {first_name, last_name} = theUser[0]
-  const hi = "hello"
 
   const categoryEmojies = {0: '🍕', 1: '⚡', 2: '🚀', 3: '💃'}
   let emoji = categoryEmojies[category]

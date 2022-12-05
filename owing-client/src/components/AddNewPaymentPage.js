@@ -2,17 +2,17 @@ import React from 'react';
 import {Input, Form, Button} from 'semantic-ui-react'
 import { v4 as uuidv4 } from 'uuid';
 import '../App.css'
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 
 
-function AddNewPaymentPage({users}){
+function AddNewPaymentPage({users, onAddNewPayment, numPayments}){
 
     const history = useHistory()
 
     const [data, setData] = useState({
         user_id: '1',
-        category: '0'
+        category: '0',
     })
 
     function onChange(e){
@@ -20,11 +20,10 @@ function AddNewPaymentPage({users}){
         const value = e.target.value
         setData({
             ...data,
+            id: numPayments+1,
             [name]: value
         })
     }
-
-    console.log(data)
 
     function handleSubmit(e){
         e.preventDefault()
@@ -35,6 +34,7 @@ function AddNewPaymentPage({users}){
             }
         )
         .then(()=> history.push('/'))
+        .then(()=>onAddNewPayment(data))
     }
 
     return(

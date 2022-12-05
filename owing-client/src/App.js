@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {useState, useEffect} from "react"
 import { Route, Switch } from "react-router-dom";
@@ -48,6 +47,18 @@ function App() {
         setPaymentsList(newList)
     })
   }
+
+  function onUpdate(data){
+    console.log(data)
+    let newPaymentList = paymentsList.map((payment)=>{
+      if(payment.id == data.id){
+        return payment = data
+      }else{
+        return payment
+      }
+    })
+    setPaymentsList(newPaymentList)
+  }
   
   function amendUserList(names){
     let newUserList = [...users, {id: users.length+1, first_name: 
@@ -55,6 +66,12 @@ function App() {
       last_name: names.last_name}]
     setUsers(newUserList)
   }
+
+  function onAddNewPayment(data){
+    let newPaymentList = [...paymentsList, data]
+    setPaymentsList(newPaymentList)
+  }
+
 
   return (
    <div className='p-5'>
@@ -64,13 +81,15 @@ function App() {
       {handleDelete} users={users}/>
     </Route>
     <Route exact path="/new_payment">
-      <AddNewPaymentPage users={users}/>
+      <AddNewPaymentPage users={users} onAddNewPayment={onAddNewPayment} 
+      numPayments={paymentsList.length}/>
     </Route>
     <Route exact path="/new_user">
       <AddNewUserPage amendUserList={amendUserList}/>
     </Route>
     <Route exact path="/new_payment/:id">
-      <EditPaymentPage/>
+      <EditPaymentPage paymentsList={paymentsList} users={users} onUpdate=
+      {onUpdate}/>
     </Route>
    </Switch>
    </div> 
