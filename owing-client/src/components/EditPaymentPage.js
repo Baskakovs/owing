@@ -26,10 +26,7 @@ function EditPaymentPage({paymentsList, users, onUpdate}){
         })
     },[])
 
-    const {amount, description, category} = data
-    console.log(data)
-
-    
+    const {amount, description, category} = data    
 
     function onChange(e){
         const name = e.target.name

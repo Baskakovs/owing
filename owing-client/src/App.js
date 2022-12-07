@@ -46,7 +46,6 @@ function App() {
       })
       setPaymentsList(newPaymentList)
       let newBalance
-      console.log()
       if(user_id == 1){
         newBalance = Math.floor(parseInt(balance) - 
         parseInt(amount/users.length))
@@ -61,14 +60,9 @@ function App() {
 
   function onUpdate(data){
     let newPaymentList = paymentsList.map((payment)=>{
-      if(payment.id == data.id){
-        return payment = data
-      }else{
-        return payment
-      }
+      return(payment.id === data.id ? payment = data : payment)
     })
     setPaymentsList(newPaymentList)
-    let newBalance
   }
 
   

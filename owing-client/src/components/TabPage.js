@@ -9,7 +9,8 @@ function TabPage({paymentsList, balance, handleDelete, users}) {
   return (
    <>
     <Balance balance={balance}/>
-    <PaymentsList paymentsList={paymentsList} users={users} handleDelete={handleDelete}/>
+    <PaymentsList paymentsList={paymentsList} users={users} handleDelete=
+    {handleDelete}/>
     <AddNewButton/>
     <AddUserButton/>
    </> 
