@@ -6,7 +6,7 @@ README - Owing
 Description
 -----------
 
-This project is inspired by the Splitser app. The central idea is to have payment tabs through which users can note who has paid for what. In turn, this facilitates an easier way of making group payments as debts can be settled at a later stage (when the tab is closed). Such apps are a perfect solution when travelling with a large group of friends and wanting to avoid unnecessary time calculating expenses.
+This project is inspired by the Splitser app (https://apps.apple.com/us/app/splitser-wiebetaaltwat/id1154059529). The central idea is to have payment tabs through which users can note who has paid for what. In turn, this facilitates an easier way of making group payments as debts can be settled at a later stage (when the tab is closed). Such apps are a perfect solution when travelling with a large group of friends and wanting to avoid unnecessary time calculating expenses.
 
 Technical Description
 ---------------------
